@@ -1,0 +1,12 @@
+<h1>Sign Up</h1>
+
+<%= form_for(@user) do |f| %>
+<%= label_tag(:name, "Username:") %><br>
+<%= f.text_field :name  %><br>
+<%= label_tag(:password, "Password:") %><br>
+<%= f.text_field :password %> <br>
+<%= label_tag(:password_confirmation, "Confirm Password:") %><br>
+<%= f.text_field :password_confirmation %> <br>
+
+<%= f.submit  %>
+<% end %>
