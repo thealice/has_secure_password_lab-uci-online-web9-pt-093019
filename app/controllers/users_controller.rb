@@ -15,13 +15,13 @@ class UsersController < ApplicationController
 
     def create
         @user = User.new(user_params)
-        if @user.save
+        if params[:user][:password] == params[:user][:password_confirmation] && @user.save
             session[:user_id] = @user.id
-            redirect_to user_path(@user)
+            redirect_to controller: 'users', action: 'welcome'
         else
-           render :new, alert: "Signup Failed. Make sure you've filled out all fields."
+            redirect_to new_user_path, alert: 
+            "Signup Failed. Make sure you've filled out all fields."
         end
-
     end
 
     private

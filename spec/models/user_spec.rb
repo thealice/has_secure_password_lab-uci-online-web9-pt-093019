@@ -14,19 +14,21 @@ RSpec.describe User, type: :model do
   end
 
   it 'is valid if password and password_confirmation match' do
-    user = User.new
+    # I added name to the user news here because i am validating prescence of name and password
+    # so without the name this would validate to false
+    user = User.new(name: "Sally")
     user.password = user.password_confirmation = 'foo'
     expect(user.valid?).to be true    
   end
 
   it 'is valid if password is set and password_confirmation is nil' do
-     user = User.new
+     user = User.new(name: "Sally")
      user.password = 'foo'
      expect(user.valid?).to be true 
   end
 
   it "is invalid if password and password_confirmation are both non-nil and don't match" do
-    user = User.new
+    user = User.new(name: "Sally")
     user.password = 'foo'
     user.password_confirmation = 'fo0'
     expect(user.valid?).to be false
